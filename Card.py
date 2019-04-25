@@ -21,11 +21,25 @@ class Card:
 
     def give_one_card(self, human):
         card = choice(self.types_exem.types)
-        points = self.cards_values.get(card)
-        return card, points
+        if "Т" in card:
+            if human.points <= 10:
+                points = 11
+            else:
+                points = 1
+        else:
+            points = self.cards_values.get(card)
+        human.points += points
+        human.cards.append(card)
 
     def give_cards(self, human):
         for _ in range(2):
             card = choice(self.types_exem.types)
             human.cards.append(card)
-            human.points += self.cards_values.get(card)
+            if "Т" in card:
+                if human.points <= 10:
+                    points = 11
+                else:
+                    points = 1
+                human.points += points
+            else:
+                human.points += self.cards_values.get(card)
