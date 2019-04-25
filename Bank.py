@@ -10,7 +10,5 @@ class Bank:
     def win(self, winner):
         if winner == "player":
             self.money_player += 10
-        elif winner == "dialer":
-            self.money_dialer += 10
         else:
-            pass
+            self.money_dialer += 10
